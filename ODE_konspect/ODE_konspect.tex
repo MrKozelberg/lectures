@@ -8,7 +8,6 @@
 \usepackage{xcolor}
 \usepackage{amssymb}
 \usepackage{amsmath}
-\usepackage{physics}
 
 \definecolor{block-gray}{gray}{0.90}
 \definecolor{pink}{cmyk}{0,1,0.25,0}
@@ -68,7 +67,7 @@
        {\bf u_{n+1}} = {\bf u_{n}} + h_n\ {\bf f}(x_n,\ {\bf u_{n}}).
     \end{equation}\par
     Казалось бы получили хорошую схему, легко реализуемую на ЭВМ. Но она жутко неустойчивая.\par
-    Для примера оценим ошибку $z_n = \abs{u_n - u_*(x_n)}$ между нашим решением $u_n$ и точным решением $u_*(x_n)$ в одномерном случае. Получаем оценку:
+    Для примера оценим ошибку $z_n = |u_n - u_*(x_n)|$ между нашим решением $u_n$ и точным решением $u_*(x_n)$ в одномерном случае. Получаем оценку:
     \begin{equation}\label{6}
         z_{n+1} = z_n + h_n\ f_u'\ z_n - \frac{{h_n}^2}{2}\ u_n''.
     \end{equation}
@@ -83,9 +82,9 @@
     где $\tilde x \in[ x_n,\ x_{n-1}]$. Подставляем (\ref{7}) в (\ref{Teylor}):
     \begin{equation*}
      {\bf u_{n+1}} \approx {\bf u_{n}} + h_n{\bf f_n}     +
-    \frac{h_n}{2}\qty({\bf f}(\tilde x, \tilde {\bf u}) - {\bf f}( x, {\bf u})).
+    \frac{h_n}{2}({\bf f}(\tilde x, \tilde {\bf u}) - {\bf f}( x, {\bf u})).
     \end{equation*}  
-    Представляем разность ${\bf f}(\tilde x, \tilde {\bf u}) - {\bf f}( x, {\bf u})$ как разность $\vb{f}_n$ и $\vb{f}_n\qty(x_n + \Delta x,\ \vb u_n + \Delta \vb u)$ с некоторыми постоянными весами. Вводим константы $\alpha, \beta, \gamma$ и $\boldsymbol{\delta}$ так, как показано ниже:    
+    Представляем разность ${\bf f}(\tilde x, \tilde {\bf u}) - {\bf f}( x, {\bf u})$ как разность ${\bf f}_n$ и ${\bf f}_n(x_n + \Delta x,\  {\bf u}_n + \Delta  {\bf u})$ с некоторыми постоянными весами. Вводим константы $\alpha, \beta, \gamma$ и $\boldsymbol{\delta}$ так, как показано ниже:    
     \begin{equation}\label{*}
         {\bf u_{n+1}} \approx {\bf u_{n}} + \alpha h_n {\bf f_{n}} + \beta {h_n} {\bf f_{n}}(x_n+\gamma h_n,\ {\bf u_{n}} + \boldsymbol{\delta} h_n).
     \end{equation}
