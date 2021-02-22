@@ -1,0 +1,134 @@
+\documentclass[a4paper,russian]{article}
+\usepackage{cmap}
+\usepackage{hyperref}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{physics}
+
+\renewcommand{\kappa}{\varkappa}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+\title{РГР 2}
+\author{А. В. Козлов} 
+\begin{document}
+\maketitle
+\section{Формулировка}
+Дана следующая бесконечная цепочка связанных пружинками 
+грузиков (см. ...).
+Требуется найти закон движения первого грузика: 
+$\delta x_0\qty(t) - ?$ 
+
+\section{Решение}
+Запишем второй закон Ньютона для грузиков:
+\begin{align}
+ & m\ddot{\delta x_n} = k \qty(\delta x_{n-1} - 2\delta x_n +
+ \delta x_{n+1}),\quad n\ne 0,1;\\
+ & M\ddot{\delta x_n} = k \qty(\delta x_{n-1} - 2\delta x_n +
+ \delta x_{n+1}) + \delta_{0,n}F\sin{\omega_0t},\quad n= 0,1.
+\end{align}
+Решения будем искать в виде:
+\[
+\delta x_n = 
+\begin{cases}
+	c_- e^{i\omega_0t-i\kappa_-n}+c.c. \quad n\le -1;\\
+	C e^{i\omega_0t-i\kappa n}+c.c. \quad n = 0,1;\\
+	c_+ e^{i\omega_0t-i\kappa_+ n}+c.c. \quad n\ge 2.
+\end{cases}
+\]
+Если подставить такой вид решения в уравнения Ньютона, то для
+$n\le -2$ и для $n\ge 3$ получаем:
+\begin{gather}
+	\omega_0^2=\dfrac{4k}{m}\sin^2{\dfrac{\kappa_-}{2}},
+	\quad n \le -2;\\
+	\omega_0^2=\dfrac{4k}{m}\sin^2{\dfrac{\kappa_+}{2}},
+	\quad n\ge 3.
+\end{gather}
+Если учесть тот факт, что решение для $n \in (-\infty,-2] 
+\cup [3,+\infty)$ должно иметь вид, как и в случае для
+обычной бесконечной цепочки осцилляторов. Посему должно 
+выполняться дисперсионное соотношение для капп:
+\[
+	\omega_0^2=4
+	\dfrac{k}{m}\sin^2{\dfrac{\kappa_{\pm}}{2}}
+.\]
+Откуда получаем выражение для капп:
+\[
+	\kappa_\pm = \pm 2 \arcsin\qty(\frac{\omega_0\sqrt{\dfrac{m}{k}}}{2})
+.\] 
+Кроме того, принимаем во внимание, что решение должно
+удовлетворять принципу причинности. То есть $n\kappa_{\pm}<0$.
+Таким образом приходим к тому, что:
+\begin{equation*}
+\kappa_+ \ge 0, \quad \kappa_- = -\kappa_+ .
+\end{equation*}
+Тогда имеем:
+\begin{equation}\label{k}
+	\kappa_+ = - \kappa_-= \abs{2 \arcsin\qty(\frac{\omega_0\sqrt{\dfrac{m}{k}}}{2})}
+\end{equation}
+\par
+Подставляем решения в уравнения Ньютона для прочих $n$ (см.
+в тетради):
+\begin{align}
+ & n=-1:\quad -m\omega_0^2=k\qty(e^{i\kappa_-}-2+ 
+ \dfrac{C}{c_-}e^{-i\kappa_-});\label{-1}\\
+ & n=0:\quad -M\omega_0^2=k\qty(\dfrac{c_-}{C}e^{i\kappa_-}-2 
+ +e^{-i\kappa})+\dfrac{F}{2iC};\label{0}\\
+ & n=1:\quad -M\omega_0^2=k\qty(e^{i\kappa}-2+\dfrac{c_+}{C}
+ e^{-2i\kappa_+ + i\kappa});\label{1}\\
+ & n=2:\quad -m\omega_0^2=k\qty(\dfrac{C}{c_+}e^{2i\kappa_+-i\kappa} 
+ -2+e^{-i\kappa_+}).\label{2}
+\end{align}
+Теперь поочерёдно рассмотрим различные пары данных выражений
+и вынесем некоторые полезные для решения данные. Итак,
+рассмотрим (\ref{-1},\ref{0}):
+\[
+\dfrac{k}{m}\qty(e^{-i\kappa_+}-2+\dfrac{C}{c_-}e^{i\kappa_+})=
+\dfrac{k}{M}\qty(\dfrac{c_-}{C}e^{-i\kappa_+}-2+e^{-i\kappa})+\dfrac{F}{2iC}
+,\]
+откуда следует:
+\begin{equation}\label{c-}
+\dfrac{c_-}{C}=\dfrac{M}{m}.
+\end{equation}
+Теперь обращаем свой взор на (\ref{-1}, \ref{2}):
+\[
+\dfrac{m}{M}e^{i\kappa_+}=\dfrac{C}{c_+}e^{2i\kappa_+ - i\kappa}
+,\] откуда выражаем отношение амплитуд:
+\begin{equation}\label{c+}
+\dfrac{c_+}{C}=\dfrac{M}{m}e^{i\kappa_+ -i\kappa}
+.\end{equation}
+
+В результате рассмотрения пары уравнений (\ref{0}, \ref{1}) можно получить соотношение:
+\begin{equation}\label{kc}
+	\sin{\kappa}=-\dfrac{F}{4kC}
+.\end{equation}
+
+Чтобы получить уравнение колебаний нулевого грузика 
+нужно найти связь между $\kappa$ и  $\kappa_+$, например. 
+Эту связь можно вытащить из (\ref{1}, \ref{2}):
+\[
+\dfrac{k}{M}\qty(e^{i\kappa}-2)=\dfrac{k}{m}\qty(\dfrac{m}{M}e^{i\kappa_+}-2)
+,\]
+тогда связь имеет вид:
+\begin{equation}\label{k+}
+e^{i\kappa}=e^{i\kappa_+}+2\qty(1-\dfrac{M}{m})
+.\end{equation}
+
+Если подставить (\ref{kc}) в (\ref{k+}) и выделить мнимую часть, то получится:
+\begin{equation*}
+	\sin{\kappa}=\omega_0\sqrt{\dfrac{m}{k}}\sqrt{1-{\omega_0^2 \dfrac{m}{k}}/4}=-\dfrac{F}{4kC}
+,\end{equation*}
+\begin{equation}\label{C_fin}
+	C=-\dfrac{F}{2k\omega_0\sqrt{\dfrac{m}{k}}\sqrt{4-\omega_0^2\dfrac{m}{k}}}.
+\end{equation}
+Таким образом получаем решение в виде:
+\[
+\delta x_0\qty(t)=C e^{i\omega_0t}+c.c.
+,\] 
+\Huge{ОТВЕТ НЕ ЗАВИСИТ ОТ СООТНОШЕНИЯ МАСС, А ФОРМА ОТВЕТА (БОЛЬШОЙ КОРЕНЬ) ЗАВИВИТ ОТ 	m!}
+\end{document}
