@@ -1,0 +1,121 @@
+\documentclass[titlepage]{article}
+\usepackage[a4paper,includehead,includefoot,headheight=10pt,headsep=2mm,width=17cm,height=27cm,footskip=0.5cm]{geometry}
+\usepackage{cmap}
+\usepackage{hyperref}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{physics}
+
+\usepackage{amsmath}
+\DeclareMathOperator\arctanh{arctanh}
+
+\begin{document}
+\begin{flushright}
+    Расчётно Графическая Работа №6
+    
+    Выполнил: Козлов Александр
+\end{flushright}
+
+\section{Формулировка задания}
+
+Исследовать в при $\beta \longrightarrow 0$ и при $\mu \longrightarrow 0$ стационарные решения уравнения:
+\begin{equation}
+    \partial_t v + v^3 \partial_x v + \beta \partial_{xxx} v v = \mu \partial_{xx} v
+\end{equation}
+\section{Решение}
+Первым делом проведём следующие необходимые процедуры.
+\begin{enumerate}
+ \item Подставляем в уравнение решение в виде стационарной волны: $v = v\qty(\xi)$, где $\xi = x - Vt$. Полагаем $V > 0$. Такая  подстанова приводит к уравнению:
+ \begin{equation}
+  -Vv' + v^3v' + \beta v''' = \mu v''
+ \end{equation}
+Полагаем, что решение обращается в нуль на бесконечности. Тогда интегрирование уравнения даёт:
+\begin{equation}
+  -Vv + \dfrac{v^4}{4} + \beta v'' = \mu v'
+\end{equation}
+\item \label{bla} Исследуем уравнение на фазовой плоскости. При этом считаем, что $\mu \not = 0$ и $\beta \not = 0$, ибо иначе уравнение сведётся к уже исследованному в (\ref{addition}). Делаем замену и получаем систему уравнений первого порядка.
+$$
+\begin{cases}
+    v'= u \\
+    u'= \dfrac{\mu}{\beta}u + \dfrac{V}{\beta}v - \dfrac1{4\beta} v^4
+\end{cases}
+$$
+Данная система имеет две стационарные точки при $u = 0$ и $v = 0,$ $\sqrt[3]{4V}$. На плоскости $\qty(\mu,\beta)$ можно следующим образом изобразить зависимость типа состояния равновесия от параметров задачи.\\
+{\LARGE ***}\\
+Таким образом, становится ясно, что имеется ввиду, когда говорится о $\beta \longrightarrow 0$ и о $\mu \longrightarrow 0$. Нужно сравнивать $\beta$ с $\frac{\mu^2}{4V}$.
+\end{enumerate}
+
+\subsection{Предельные случаи}\label{addition}
+\paragraph{$\mu \longrightarrow 0$}
+Само условие малости записывается так:
+\begin{equation}
+ \abs{\mu} \ll \sqrt{4V\abs{\beta}}
+\end{equation}
+Типы точек равновесия зависят от знака $\beta$, как видно из вышеприведённых картинок. Посему рассмотрение данного предельного случая распадается на двое. В обоих случаях нет диссипации и, следовательно, стационарное решение будет иметь солитонный вид. 
+\par Ясно, что диссипация уходит из уравнения в рассматриваемом пределе, что позволяет выделить гамильтониан. Далее, приравняв его значению решения на сепаратрисе (которая соответсвует солитону), понижаем порядок уравнения до перового, что позволяет его просто проинтегрировать. То есть вся сложность уравнения сводится ко взятию интеграла.
+
+\subparagraph{$\beta > 0$}
+\begin{enumerate}
+ \item Построим фазовую плоскость данного случая.
+ \\
+{\LARGE ***}
+\\
+
+\item Вообще из\--за того, что $\mu \not = 0$, будет иметь место многосолитонное решение, но для оценок полезно получить решение при $\mu = 0$. Это даст примерный вид уединённого солитона, его характерную <<ширину>> и амплитуду. Итак, гамильтониан задачи имеет вид:
+\begin{equation}
+ H = \frac{\qty(v')^2}{2} - \frac{V v^2}{2\beta} + \frac{v^5}{20\beta} 
+\end{equation}
+Солитонному решению соответствует нулевой уровень энергии. Получаем интегральное соотношение:
+\begin{equation}
+ \int \dfrac{\dd{v}}{v\sqrt{\frac{V}{\beta} - \frac{1}{10\beta} v^3}} = \int \dd{\xi}
+\end{equation}
+Вытаскиваем общий множитель из под корня:
+\begin{equation}
+ \int \dfrac{\dd{v}}{v\sqrt{1 - \frac{v^3}{10V}}} = \int \sqrt{\frac{V}{\beta}} \dd{\xi}
+\end{equation}
+И обезразмериваем:
+\begin{equation}
+ \int  \dfrac{\dd{\zeta}}{\zeta\sqrt{1 - \zeta^3}} = \int \sqrt{\frac{V}{\beta}} \dd{\xi}
+\end{equation}
+Тогда интегрирование даёт:
+\begin{equation}
+ -\dfrac23 \arctan{\sqrt{1-\zeta^3}} = \sqrt{\frac{V}{\beta}} \xi
+\end{equation}
+Производим возвращение к исходным переменным:
+\begin{equation}
+ -\dfrac23 \arctanh{\sqrt{1-\frac{v^3}{10V}}} = \sqrt{\frac{V}{\beta}} \xi
+\end{equation}
+Теперь выражаем $v\qty(\xi)$:
+\begin{equation}\label{soliton}
+ v\qty(\xi) = \dfrac{\sqrt[3]{10V}}{\cosh^{\tfrac23}{\qty(\dfrac32\sqrt{\dfrac{V}{\beta}}\xi)}}
+\end{equation}
+Таким образом, отсюда видно, что <<ширина>> единичного солитона (то бишь характерный масштаб изменения функции) есть ${ l \sim \tfrac{2}{3}\sqrt{\tfrac{\beta}{V}}}$, а амплитуда изменения функции ${ A \sim \sqrt[3]{10V}}$.
+\item Но не стоит забывать и про то, что возможно многосолитонное решение (оно будет при не нулевых, но малых, согласно (\ref{bla}), $\mu$). Оценим расстояние между солитонами в данном случае. Для этого найдем минимальное значение поля $\delta v$ после первого солитона из уравнения на изменение энергии (коэффициенты нужно подбирать аккуратно из сохранения размерности):
+\begin{equation}
+ \Delta H =  \Delta \qty(- \frac{V \qty(\delta v)^2}{2\beta} + \frac{\qty(\delta v) ^5}{20\beta}) =  - \dfrac{\mu}{\beta} \int \qty(\partial_x v)^2 \dd{\xi}
+\end{equation}
+Поскольку мы считаем затухание слабым, то в правой части мы можем подставить невозмущенное решение в виде солитона (\ref{soliton}). Минимум решения близок к нулю, посему оставляем только меньшие степени $\delta v$. Тогда получаем:
+\begin{equation}
+ \qty(\delta v)^2 =  \dfrac{2\mu}{\beta} \int \qty(\sqrt[3]{10V\cosh^{-5}{\qty(\tfrac32\sqrt{\tfrac{V}{\beta}}\xi)}}\sinh{\qty(\tfrac32\sqrt{\tfrac{V}{\beta}}\xi)} )^2 \dd{\xi}
+\end{equation}
+Обезразмериваем интеграл, вводя новую переменную $\tfrac32\sqrt{\tfrac{V}{\beta}}\xi = \phi$:
+\begin{equation}
+ \qty(\delta v)^2 =  \dfrac{4\sqrt[3]{10}\mu}{3\sqrt{\beta }\sqrt[6]{V}}  \int \qty(\sqrt[3]{\cosh^{-5}{\qty(\phi)}}\sinh{\phi} )^2 \dd{\phi}
+\end{equation}
+После взятия интеграла получаем следующий ответ:
+\begin{equation}
+ \qty(\delta v)^2 = \dfrac{27 719 \sqrt[3]{10}}{18 750} \dfrac{\mu}{\sqrt{\beta }\sqrt[6]{V}}   \varpropto \mu
+\end{equation}
+Теперь получим решение вблизи седловой точки ($v \approx 0$). Для этого нужно взять интеграл:
+\begin{equation}
+ \int \dfrac{\dd{v}}{v} = \int \sqrt{\frac{V}{\beta}} \dd{\xi}
+\end{equation}
+
+\end{enumerate}
+
+\end{document}
