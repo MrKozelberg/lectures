@@ -41,7 +41,7 @@ double integrate_Simpson(std::function<double(double)> f, double a, double b, si
     for (size_t i = 0; i < n; ++ i)
     {
         func(i) = f(i * step);
-        if (i != 0 or i != n){
+        if (i != 0 and i != n){
             help(i) = A(i % 2);
         } else help(i) = 1;
     }
