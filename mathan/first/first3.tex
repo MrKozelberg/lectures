@@ -1,0 +1,76 @@
+\documentclass[tikz]{standalone}      
+\usepackage[russian]{babel}
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{mathdots}
+\usepackage{yhmath}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{tabularx}
+\usepackage{extarrows}
+\usepackage{booktabs}
+\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shadows.blur}
+\usetikzlibrary{shapes}
+
+
+\begin{document}
+ 
+
+% Pattern Info
+ 
+\tikzset{
+pattern size/.store in=\mcSize, 
+pattern size = 5pt,
+pattern thickness/.store in=\mcThickness, 
+pattern thickness = 0.3pt,
+pattern radius/.store in=\mcRadius, 
+pattern radius = 1pt}
+\makeatletter
+\pgfutil@ifundefined{pgf@pattern@name@_i9uq4ahqu}{
+\pgfdeclarepatternformonly[\mcThickness,\mcSize]{_i9uq4ahqu}
+{\pgfqpoint{0pt}{0pt}}
+{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+{\pgfpoint{\mcSize}{\mcSize}}
+{
+\pgfsetcolor{\tikz@pattern@color}
+\pgfsetlinewidth{\mcThickness}
+\pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+\pgfpathlineto{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+\pgfusepath{stroke}
+}}
+\makeatother
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Circle [id:dp6945017785968105] 
+\draw  [pattern=_i9uq4ahqu,pattern size=6pt,pattern thickness=0.75pt,pattern radius=0pt, pattern color={rgb, 255:red, 248; green, 231; blue, 28}] (112.4,178.19) .. controls (112.4,118.08) and (161.12,69.36) .. (221.23,69.36) .. controls (281.33,69.36) and (330.06,118.08) .. (330.06,178.19) .. controls (330.06,238.29) and (281.33,287.02) .. (221.23,287.02) .. controls (161.12,287.02) and (112.4,238.29) .. (112.4,178.19) -- cycle ;
+%Shape: Circle [id:dp9176540211182918] 
+\draw  [fill={rgb, 255:red, 74; green, 144; blue, 226 }  ,fill opacity=1 ] (287.66,226.83) .. controls (260.8,263.52) and (209.28,271.48) .. (172.59,244.62) .. controls (135.9,217.76) and (127.93,166.24) .. (154.79,129.55) .. controls (181.66,92.86) and (233.18,84.9) .. (269.86,111.76) .. controls (306.55,138.62) and (314.52,190.14) .. (287.66,226.83) -- cycle ;
+%Straight Lines [id:da8005953616245359] 
+\draw    (221.23,178.19) -- (269.86,111.76) ;
+%Straight Lines [id:da8272460386236682] 
+\draw    (221.23,178.19) -- (286.22,90) ;
+
+% Text Node
+\draw (176.22,213.62) node [anchor=north west][inner sep=0.75pt]    {$V$};
+% Text Node
+\draw (114.06,156.92) node [anchor=north west][inner sep=0.75pt]    {$\Delta V$};
+% Text Node
+\draw (247.55,148.37) node [anchor=north west][inner sep=0.75pt]    {$R$};
+% Text Node
+\draw (273.89,100) node [anchor=north west][inner sep=0.75pt]    {$\Delta R$};
+
+
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,109 @@
+\documentclass[tikz]{standalone}      
+\usepackage[russian]{babel}
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usepackage{mathdots}
+\usepackage{yhmath}
+\usepackage{cancel}
+\usepackage{color}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{gensymb}
+\usepackage{tabularx}
+\usepackage{extarrows}
+\usepackage{booktabs}
+\usetikzlibrary{fadings}
+\usetikzlibrary{patterns}
+\usetikzlibrary{shadows.blur}
+\usetikzlibrary{shapes}
+
+
+\begin{document}
+ 
+
+% Pattern Info
+ 
+\tikzset{
+pattern size/.store in=\mcSize, 
+pattern size = 5pt,
+pattern thickness/.store in=\mcThickness, 
+pattern thickness = 0.3pt,
+pattern radius/.store in=\mcRadius, 
+pattern radius = 1pt}
+\makeatletter
+\pgfutil@ifundefined{pgf@pattern@name@_xaj1xdnti}{
+\pgfdeclarepatternformonly[\mcThickness,\mcSize]{_xaj1xdnti}
+{\pgfqpoint{0pt}{0pt}}
+{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+{\pgfpoint{\mcSize}{\mcSize}}
+{
+\pgfsetcolor{\tikz@pattern@color}
+\pgfsetlinewidth{\mcThickness}
+\pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+\pgfpathlineto{\pgfpoint{\mcSize+\mcThickness}{\mcSize+\mcThickness}}
+\pgfusepath{stroke}
+}}
+\makeatother
+
+% Pattern Info
+ 
+\tikzset{
+pattern size/.store in=\mcSize, 
+pattern size = 5pt,
+pattern thickness/.store in=\mcThickness, 
+pattern thickness = 0.3pt,
+pattern radius/.store in=\mcRadius, 
+pattern radius = 1pt}
+\makeatletter
+\pgfutil@ifundefined{pgf@pattern@name@_li6k58qnb}{
+\pgfdeclarepatternformonly[\mcThickness,\mcSize]{_li6k58qnb}
+{\pgfqpoint{0pt}{-\mcThickness}}
+{\pgfpoint{\mcSize}{\mcSize}}
+{\pgfpoint{\mcSize}{\mcSize}}
+{
+\pgfsetcolor{\tikz@pattern@color}
+\pgfsetlinewidth{\mcThickness}
+\pgfpathmoveto{\pgfqpoint{0pt}{\mcSize}}
+\pgfpathlineto{\pgfpoint{\mcSize+\mcThickness}{-\mcThickness}}
+\pgfusepath{stroke}
+}}
+\makeatother
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Shape: Rectangle [id:dp06900984048243286] 
+\draw   (43.35,10) -- (388.67,10) -- (388.67,273.17) -- (43.35,273.17) -- cycle ;
+%Shape: Rectangle [id:dp6807247155324314] 
+\draw  [pattern=_xaj1xdnti,pattern size=6pt,pattern thickness=0.75pt,pattern radius=0pt, pattern color={rgb, 255:red, 0; green, 0; blue, 0}] (43.35,10) -- (388.67,10) -- (388.67,56.12) -- (43.35,56.12) -- cycle ;
+%Shape: Rectangle [id:dp6925591435460149] 
+\draw  [pattern=_li6k58qnb,pattern size=6pt,pattern thickness=0.75pt,pattern radius=0pt, pattern color={rgb, 255:red, 0; green, 0; blue, 0}] (311.11,10.54) -- (388.67,10.54) -- (388.67,273.17) -- (311.11,273.17) -- cycle ;
+
+% Text Node
+\draw (169.52,142.39) node [anchor=north west][inner sep=0.75pt]    {$M$};
+% Text Node
+\draw (11.46,25.19) node [anchor=north west][inner sep=0.75pt]    {$\Delta V$};
+% Text Node
+\draw (337.09,275.88) node [anchor=north west][inner sep=0.75pt]    {$\Delta \rho $};
+% Text Node
+\draw (158.12,278.05) node [anchor=north west][inner sep=0.75pt]    {$\rho $};
+% Text Node
+\draw (19.73,147.82) node [anchor=north west][inner sep=0.75pt]    {$V$};
+% Text Node
+\draw  [draw opacity=0][fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ]  (159.68,21.88) -- (200.68,21.88) -- (200.68,45.88) -- (159.68,45.88) -- cycle  ;
+\draw (162.68,26.28) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,opacity=1 ]  {$\Delta V\rho $};
+% Text Node
+\draw  [draw opacity=0][fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ]  (326.53,20.79) -- (379.53,20.79) -- (379.53,44.79) -- (326.53,44.79) -- cycle  ;
+\draw (329.53,25.19) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,opacity=1 ]  {$\Delta V\Delta \rho $};
+% Text Node
+\draw  [draw opacity=0][fill={rgb, 255:red, 255; green, 255; blue, 255 }  ,fill opacity=1 ]  (330.31,133.65) -- (371.31,133.65) -- (371.31,157.65) -- (330.31,157.65) -- cycle  ;
+\draw (333.31,138.05) node [anchor=north west][inner sep=0.75pt]  [color={rgb, 255:red, 0; green, 0; blue, 0 }  ,opacity=1 ]  {$V\Delta \rho $};
+
+
+\end{tikzpicture}
+
+\end{document}
