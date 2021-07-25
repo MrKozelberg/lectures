@@ -1,0 +1,16 @@
+\babel@toc {russian}{}
+\contentsline {section}{\numberline {1}Как далеко видно с горы}{2}{}%
+\contentsline {subsection}{\numberline {1.1}Формулировка задачи}{2}{}%
+\contentsline {subsection}{\numberline {1.2}Строгое решение задачи}{2}{}%
+\contentsline {subsection}{\numberline {1.3}Упрощение ответа}{2}{}%
+\contentsline {subsection}{\numberline {1.4}Геометрическое доказательство теоремы Пифагора}{3}{}%
+\contentsline {section}{\numberline {2}Вычисление массы Земли}{4}{}%
+\contentsline {subsection}{\numberline {2.1}Вычисление объема Земли}{4}{}%
+\contentsline {subsection}{\numberline {2.2}Завершение вычисления массы Земли}{5}{}%
+\contentsline {subsection}{\numberline {2.3}Комментарии о значении полученных результатов}{5}{}%
+\contentsline {subsection}{\numberline {2.4}Немного цифр}{6}{}%
+\contentsline {section}{\numberline {3}Треугольники и окружности}{6}{}%
+\contentsline {subsection}{\numberline {3.1}Постановка задачи}{6}{}%
+\contentsline {subsection}{\numberline {3.2}Формальное геометрическое решение}{7}{}%
+\contentsline {subsection}{\numberline {3.3}Завершение доказательства}{7}{}%
+\contentsline {subsection}{\numberline {3.4}Пример}{8}{}%
