@@ -1,0 +1,184 @@
+\documentclass[titlepage]{article}
+\usepackage[a4paper,includehead,includefoot,headheight=10pt,headsep=2mm,width=17cm,height=27cm,footskip=0.5cm]{geometry}
+\usepackage{cmap}
+\usepackage{hyperref}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{physics}
+\usepackage{wrapfig}
+
+\usepackage{pgfplots}
+\pgfplotsset{width=7cm,compat=newest}
+
+\usepackage{amsmath}
+\DeclareMathOperator\arctanh{arctanh}
+
+\usepackage{amsmath}
+\DeclareMathOperator\arccosh{arccosh}
+
+\usepackage{amsmath}
+\DeclareMathOperator\const{const}
+
+\usepackage{amsmath}
+\DeclareMathOperator\erfi{erfi}
+
+\begin{document}
+\begin{flushright}
+    Расчётно Графическая Работа №8
+    
+    Выполнил: Козлов Александр
+\end{flushright}
+\section{Формулировка}
+Найти условие коллапса для решения уравнения:
+\begin{equation}
+ i\partial_t u + \partial_{xx}u + \partial_{yy}y + \abs{u}^2 u + \alpha x u = -i\gamma u e^{\frac{x}{L}}
+\end{equation}
+Использовать без аберрационное приближение, считая:
+\begin{equation}
+ L \gg a_x,\; a_y
+\end{equation}
+Найти и нарисовать положение центра масс.
+\section{Решение}
+Восстанавливаем действие по уравнению:
+\begin{equation}
+ S = \iiint \qty(\dfrac{i}{2} \qty(u^* \partial_t u  -  u\partial_t u^*) - \abs{\partial_x u}^2 - {\abs{\partial_y u}}^2 + \dfrac{{\abs{u}}^4}{2} + \alpha x {\abs{u}}^2) \dd{x} \dd{y} \dd{t}
+\end{equation}
+Из физических соображений (из-за неимения $y$ в уравнении полагаем, что центр масс не будет смещаться по данной координате, следовательно, не будет $k_y,\; y_0$) выбираем решение в виде следующего гаусса:
+\begin{equation}
+ u = A \exp\qty[-\dfrac{(x-x_0)^2}{2a_x^2} - \dfrac{y^2}{2a_y^2} + i \qty(\dfrac{\sigma_x (x-x_0)^2}{2} + \dfrac{\sigma_yy^2}{2}+k_xx+\varphi)]
+\end{equation}
+Подстановка в действие решения такого вида приводит к <<укороченному>> лагранжиану:
+\begin{equation}
+ \tilde{\mathcal{L}} = -\pi A^2 a_y a_x \qty(\frac14\qty[\dot{\sigma_x}a_x^2+\dot{\sigma_y}a_y^2]+\dot{k_x}x_0+\dot{\varphi}+\frac12\qty[\frac{1}{a_x^2}+\frac{1}{a_y^2}]+\frac12\qty[\sigma_x^2a_x^2+\sigma_y^2a_y^2]+k_x^2-\alpha x_0 - \frac{A^2}{4})
+\end{equation}
+Тогда, учитывая диссипативную функцию, получаем следующие уравнения Лагранжа:
+\begin{equation}
+ \pdv{\tilde{\mathcal{L}}}{a_j} - \dv{t}(\pdv{\tilde{\mathcal{L}}}{\dot{a_j}}) = -i\gamma\iint\dd{x}\dd{y}e^{\frac{x}{L}}\qty(u \pdv{u^*}{a_j}-u^* \pdv{u}{a_j}),\qquad j=\overline{1,8}
+\end{equation}
+Для $a_j = \varphi$ получается уравнение:
+\begin{equation}\label{P}
+ \dot{\mathrm{P}} = -2\gamma \mathrm{P} e^{\frac{x_0}{L}}, \qquad \mathrm{P} =\pi A^2a_xa_y
+\end{equation}
+Для $a_j = \sigma_x$:
+\begin{equation}
+ \sigma_x = \dfrac{\dot{a_x}}{2a_x}
+\end{equation}
+Для $a_j = a_x^2$:
+\begin{equation}
+ \frac{\dot{\sigma_x}}{2} + \sigma_x^2 = \frac{1}{a_x^4} \qty(1 - \frac{\mathrm{P}a_x}{4\pi a_y})
+\end{equation}
+Откуда, подставив $\sigma_x$, можно получить:
+\begin{equation}
+ \ddot{a_x} = \frac{4}{a_x^3} \qty(1 - \frac{\mathrm{P}a_x}{4\pi a_y})
+\end{equation}
+Аналогично и для игрековых вариантов этих переменных:
+\begin{equation}
+ \ddot{a_y} = \frac{4}{a_y^3} \qty(1 - \frac{\mathrm{P}a_y}{4\pi a_x})
+\end{equation}
+Варьирование по $A^2$ может позволить найти $\varphi$, если известны $a_x,\; a_y$, ведь оно приводит к соотношению:
+\begin{equation}
+ \mathrm{P} = 2a_xa_y\qty(\frac14\qty[\dot{\sigma_x}a_x^2+\dot{\sigma_y}a_y^2]+\dot{\varphi}+\frac12\qty[\frac{1}{a_x^2}+\frac{1}{a_y^2}]+\frac12\qty[\sigma_x^2a_x^2+\sigma_y^2a_y^2]+k_x^2)
+\end{equation}
+Варьирование по $x_0$ приводит к следующему соотношению:
+\begin{equation}
+ \dot{k_x} = \alpha
+\end{equation}
+Откуда можно получить:
+\begin{equation}
+ k_x\qty(t) = \alpha t + k_0
+\end{equation}
+Варьирование по $k_x$ даёт:
+\begin{equation}
+ k_x = \dfrac{\dot{x_0}}{2}
+\end{equation}
+\begin{figure}[t]
+\centering
+ \begin{tikzpicture}
+	\begin{axis}
+	[
+	xlabel={$t$},
+	ylabel={$x_0$},  
+	axis lines=middle,
+	enlargelimits=true,
+	xmin=-0.5,
+	xmax=5,
+	restrict y to domain=0:5
+    ]
+		\addplot[red!50,domain={0:5},samples=1000]{1.5*x*x/2+1*x+0.89} node[pos=1] (1) {};
+		\addplot[blue!50,domain={0:5},samples=1000]{1*x+0.89} node[pos=1] (2) {};
+		\addplot[brown!50,domain={0:5},samples=1000]{-1.5*x*x/2+1*x+0.89} node[pos=1] (3) {};
+		\node [above, color = red] at (1) {$\alpha = 1.5$};
+		\node [above, color = blue] at (2) {$\alpha = 0$};
+		\node [above, color = brown] at (3) {$\alpha = -1.5$};
+	\end{axis}
+\end{tikzpicture}
+\caption{Траектория центра масс с различными параметрами $\alpha$ при параметрах $k_0 = 0.5$ и $\tilde{x}_0 = 0.89$}
+\label{pic:speed}
+\end{figure}
+Что позволяет выяснить траекторию центра масс решения:
+\begin{equation}
+ x_0\qty(t) = \alpha \dfrac{t^2}{2} + 2 k_0 t +\tilde{x}_0
+\end{equation}
+Данный результат при подстановке в уравнение (\ref{P}) позволяет найти:
+\begin{equation}
+ \mathrm{P} \qty(t) = \mathrm{P_0} \exp{-2\gamma e^{\frac{\tilde{x}}{2} - \frac{k_0^2}{2\alpha}} \sqrt{\frac{\pi}{2\alpha}}\erfi{\qty[\frac{\alpha t + k_0}{\sqrt{2\alpha}}]}}
+\end{equation}
+Это функция очень сильно затухает. Будем считать далее инкремент затухания достаточно большим:
+\begin{equation}
+\gamma \gg e^{-\frac{\tilde{x}}{2} + \frac{k_0^2}{2\alpha}} \sqrt{\dfrac{2a}{\pi}} \dfrac{1}{\erfi{\qty[\frac{\alpha + k_0}{\sqrt{2\alpha}}]}} 
+\end{equation}
+Таким образом система уравнений на $a_x,\; a_y$ оказывается замкнутой:
+\begin{align}
+ \begin{cases}
+ &\ddot{a_x} = \dfrac{4}{a_x^3} \qty(1 - \dfrac{\mathrm{P} a_x}{4\pi a_y})\simeq \dfrac{4}{a_x^3}\\
+ &\ddot{a_y} = \dfrac{4}{a_y^3} \qty(1 - \dfrac{\mathrm{P}a_y}{4\pi a_x}) \simeq \dfrac{4}{a_y^3}
+ \end{cases}
+\end{align}
+То есть при больших гамма коллапса не будет. Посмотрим, что будет при малых гамма:
+\begin{equation}
+\gamma \ll e^{-\frac{\tilde{x}}{2} + \frac{k_0^2}{2\alpha}} \sqrt{\dfrac{2a}{\pi}} \dfrac{1}{\erfi{\qty[\frac{\alpha + k_0}{\sqrt{2\alpha}}]}} 
+\end{equation}
+Тут можно действовать следующим образом. Аппроксимировать $\mathrm{P} \simeq \mathrm{P_0}$ до какого-то времени (см. график $\mathrm{P}\qty(t)$). Таким временем будет характерное время $t_*$ такое, что:
+\begin{equation}
+ 2\gamma e^{\frac{\tilde{x}}{2} - \frac{k_0^2}{2\alpha}} \sqrt{\frac{\pi}{2\alpha}}\erfi{\qty[\frac{\alpha t_* + k_0}{\sqrt{2\alpha}}]} = \dfrac{1}{e}
+\end{equation}
+То есть это характерная ширина $\mathrm{P}\qty(t)$. Получается следующее приближение:
+\begin{gather}
+ \mathrm{P}\qty(t) \simeq
+ \begin{cases}
+  &\mathrm{P_0},\quad {t} \leq t_*\\
+  &0,\quad {t} > t_*
+ \end{cases} 
+\end{gather}
+Тогда систему при $t < t_*$ можно упростить:
+\begin{align}
+ \begin{cases}
+ &\ddot{a_x} = \dfrac{4}{a_x^3} \qty(1 - \dfrac{\mathrm{P_0}}{4\pi}\dfrac{a_x}{a_y})\\
+ &\ddot{a_y} = \dfrac{4}{a_y^3} \qty(1 - \dfrac{\mathrm{P_0}}{4\pi} \dfrac{a_y}{a_x})
+ \end{cases}
+\end{align}
+Коллапс может быть лишь при $t < t_*$ ввиду того, что при больших временах слева в уравнениях появляется положительный коэффициент, и ширины будут лишь нарастать.
+\par Легко проанализировать случай, когда начальные значения $a_x,\; a_y$ близки. Из симметрии уравнений следует, что близость $a_x,\; a_y$ сохраняется в дальнейшем (это так же видно из численного решения). Систему можно привести к более простому виду:
+\begin{align}
+ \begin{cases}
+ &\ddot{a_x} = \dfrac{4}{a_x^3} \qty(1 - \dfrac{\mathrm{P_0}}{4\pi})\\
+ &\ddot{a_y} = \dfrac{4}{a_y^3} \qty(1 - \dfrac{\mathrm{P_0}}{4\pi} )
+ \end{cases}
+\end{align}
+Схожие уравнения уже были проанализированы на лекции. Условием существования коллапса будет:
+\begin{equation}
+\mathrm{P_0} > 4 \pi 
+\end{equation}
+%
+%Замечание:
+%Альфа равно нулю следовательно нет каустики, альфа больше нуля --- каустика есть
+%
+
+
+\end{document}
+
