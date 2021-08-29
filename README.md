@@ -1,7 +1,7 @@
 # Lectures and HWs
 You can find here some lectures and HWs in TeX-format.
 
-<img src="tkv_cgw/3/Figure_1.png" width=450> <img src="tkv_cgw/6/kink.png" width=450>
+<img src="tkv_cgw/9/Figure_1.png" width=900>
 
 ## Stucture 
 * [ode_notes][ode] contains lecture notes on numerical methods for solving ordinary differential equations.
