@@ -1,13 +1,11 @@
-*.bbl
-*.blg
-*.swp
-*.tex.swp
-*.aux
+# final files
 *.pdf
-*.fdb_latexmk
-*.fls
+
+# texstudio files
+*.aux
 *.log
+*.gz
 *.out
-*.synctex.gz
-*.toc
-*.zip
+
+# vim files
+*.swp

@@ -1,0 +1,124 @@
+% document type
+\documentclass[12pt]{article}
+
+% packages
+\usepackage[total={170mm,230mm}]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{physics}
+\usepackage{nicefrac}
+\usepackage{wrapfig}
+\usepackage{cancel}
+\usepackage{hyperref, cmap}
+\usepackage{pgfplots}
+
+% settings
+\pgfplotsset{width=\linewidth, compat=newest}
+
+% definitions
+\DeclareMathOperator\arctanh{arctanh}
+\DeclareMathOperator\arccosh{arccosh}
+\DeclareMathOperator\const{const}
+\newtheorem{definition}{Опредление}[section]
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{axiom}{Аксиома}[section]
+\newtheorem{hypothesis}{Гипотеза}[section]
+
+\title{Исследование функций (?)}
+\author{Алексей Савватеев \and Александр Тонис}
+
+\begin{document}
+\maketitle
+Математический анализ отличается от математики, изучаемой в школе, во\--первых, тем, что математический анализ оперирует понятием предела (см. \cite{lim_useim_use}), во\--вторых, тем, что в математическом анализе рассматривают объекты различной размерности, а не только одномерные. Проиллюстрируем эти различия на примере многочленов.
+\section{Многочлены и их графики}
+Напомним читателю некоторые важные факты о многочленах. Прежде всего введём определение многочлена.
+\begin{definition}
+	Многочленом натуральной степени $n$ называется функция, представляющая из себя сумму следующего вида:
+	\begin{equation}
+	f(x) = \sum_{k=0}^n{a_k \cdot x^k},
+	\end{equation}
+	где $a_n$ не равно нулю.
+\end{definition}
+Важно заметить, что если $a_k$ было равно нулю, то многочлен не зависит от $k$\--ой степени аргумента $x$. Поэтому в определении многочлена степени $n$ присутствует требование
+\begin{equation}
+a_n \ne 0.
+\end{equation}
+\par
+Качественно изучим график многочлена некоторой натуральной степени. Можно заметить, что если старший коэффициент ($a_n$) положительный, то при стремлении аргумента $x$ к плюс бесконечности многочлен степени $n$ неограниченно растёт (см. рис. \ref{fig:1}), что можно записать следующим образом:
+\begin{equation}
+f(x) = \sum_{k=0}^n{a_k \cdot x^k} \underset{x\rightarrow+\infty}{\longrightarrow}+\infty.
+\end{equation}
+\begin{figure}[ht]\label{fig:1}
+	\centering
+	\begin{tikzpicture}
+	\begin{axis}[
+	xlabel=x,
+	ylabel={$f(x)$},
+	axis lines=middle,
+	ymax = 250,
+	ymin = -250,
+	xmax = 4,
+	xmin = -4,
+	enlargelimits=true,
+	%restrict y to domain=-200:200,
+	xtick=\empty,
+	ytick=\empty
+	]
+	\addplot[
+	blue!,
+	line width=1.6pt,
+	domain={-4:4},
+	samples=1000
+	]{2*x^7-28*x^5+98*x^3-72*x};
+	\addplot[
+	blue!,
+	dashed,
+	line width=1.6pt,
+	domain={-4:4},
+	samples=1000
+	]{-2*x^7+28*x^5-98*x^3+72*x};
+	\addplot[
+	red!,
+	line width=1.6pt,
+	domain={-4:4},
+	samples=1000
+	]{x^7-14*x^5+49*x^3-36*x};
+	\end{axis}
+	\end{tikzpicture}
+	\caption{График полиномов нечетной степени. В синий цвет окрашен график функции $2x^{7} - 28 x^{5} + 98 x^{3} - 72 x$, в зелёный~\----~график функции $x^{7} - 14 x^{5} + 49 x^{3} - 36 x$. Пунктирная синяя кривая является графиком функции $-2x^{7} + 28 x^{5} -98 x^{3} + 72 x$. Видно, что с ростом $x$ синий график неограниченно растёт, синий пунктирный же неограниченно убывает, красный график тоже растёт, как и синий, но медленнее.}
+\end{figure}
+Действительно, так как все коэффициенты $\qty{a_k}_{k=0}^n$ являются фиксированными величинами, то при росте аргумента быстрее всего растёт слагаемое с наибольшей степенью. Например, рассмотрим функцию
+\begin{equation}
+f(x)=2x^{7} - 28 x^{5} + 98 x^{3} - 72.
+\end{equation}
+Уже при $x = 1000$ имеем следующее значение функции:
+\begin{equation}
+f(1000) = 2 \cdot 10^{21} - 28 \cdot 10^{15} + 98 \cdot 10^9 - 72.
+\end{equation}
+Видно, что \emph{старшее} слагаемое (слагаемое большей степени) на несколько порядков (в несколько миллионов раз) превосходит остальные слагаемые по абсолютному значению, то есть все слагаемые, кроме главного члена, вносят незначительный вклад в значение функции. Главный член многочлена с ростом $x$ продолжает увеличиваться, затмевает собой остальные члены, поэтому функция неограниченно растёт.
+\par
+Представляется очевидным такой вывод. Если коэффициент при главном члене многочлена будет отрицательным, то и стремиться выражение будет к отрицательной бесконечности (см. рис. \ref{fig:1}).
+\par
+Одной из основных задач алгебры является задача поиска корней уравнения типа
+\begin{equation}\label{eq:1}
+\sum_{k=0}^n{a_k \cdot x^k} = 0.
+\end{equation}
+То есть рассматривается уравнение, представляющее из себя многочлен степени $n$, приравненный к нулю. В силу свойств уравнений, можно поделить равенство (\ref{eq:1}) на значение старшего коэффициента $a_n$, благо оно отлично от нуля в силу определения многочлена степени $n$. Тогда получим \emph{приведённый} многочлен, который можно записать так:
+\begin{equation}\label{eq:2}
+\sum_{k=0}^{n-1}{\dfrac{a_k}{a_n} \cdot x^k} + x^n = 0.
+\end{equation}
+Уравнения (\ref{eq:1}) и (\ref{eq:2}) тождественны друг другу, что означает совпадение их корней. А как при этом соотносятся графики многочленов? Вновь обратимся к рисунку \ref{fig:1}. На нём видно, что при делении коэффициентов многочлена 
+
+\begin{thebibliography}{9}
+	\bibitem{lim_use}
+	Савватеев А., Тонис А., \textit{Применение пределов в математическом анализе}
+	\\\texttt{\url{https://enabla.com/ru/pub/0000}}
+\end{thebibliography}
+\end{document}
