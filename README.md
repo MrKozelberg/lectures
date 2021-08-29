@@ -1,5 +1,6 @@
 # Lectures and HWs
 You can find here some lectures and HWs in TeX-format.
+
 <img src="tkv_cgw/3/Figure_1.png" width=400>
 
 ## Stucture 
