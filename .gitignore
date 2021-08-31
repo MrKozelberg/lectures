@@ -1,11 +1,15 @@
 # final files
 *.pdf
 
-# texstudio files
+# latex files
 *.aux
 *.log
 *.gz
 *.out
+*.dvi
+*.fdb_latexmk
+*.fls
+*.tex~
 
 # vim files
 *.swp
