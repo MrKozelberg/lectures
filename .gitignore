@@ -2,12 +2,12 @@
 *.aux
 *.log
 *.gz
+*.toc
 *.out
 *.dvi
 *.fdb_latexmk
 *.fls
 *.tex~
-*.toc
 
 # vim files
 *.swp
