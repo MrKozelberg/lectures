@@ -1,0 +1,41 @@
+\documentclass[tikz,10pt]{standalone}
+\usepackage{amsmath,amssymb,cmap,pgfplots,pgfplotstable}
+\usetikzlibrary{arrows,calc,intersections}
+\pgfplotsset{compat=newest}
+
+\begin{document} 
+\begin{tikzpicture}
+\begin{axis}[
+xlabel={$x$},
+ylabel={$f(x)$},
+axis lines=middle,
+ymax = 2,
+ymin = -0.5,
+xmax = 2,
+xmin = -2,
+enlargelimits=true,
+%restrict y to domain=-200:200,
+xtick=\empty,
+ytick=\empty
+]
+\addplot[
+blue!,
+line width=1.6pt,
+domain={-2:2},
+samples=100
+]{x^2};
+\addplot[
+red!,
+line width=1.6pt,
+domain={-2:2},
+samples=100
+]{2*x};
+\addplot[
+green!,
+line width=1.6pt,
+domain={-2:2},
+samples=100
+]{2};
+\end{axis}
+\end{tikzpicture}
+\end{document}
