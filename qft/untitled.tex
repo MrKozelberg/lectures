@@ -1,0 +1,160 @@
+% document type
+\documentclass[12pt]{article}
+
+% packages
+\usepackage[total={170mm,230mm}]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[russian]{babel}
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{physics}
+\usepackage{nicefrac}
+\usepackage{cancel}
+\usepackage{hyperref}
+\usepackage{cmap}
+
+% definitions
+\DeclareMathOperator\arctanh{arctanh}
+\DeclareMathOperator\arccosh{arccosh}
+\DeclareMathOperator\const{const}
+
+\title{Задача 8}
+\author{Козлов А.}
+
+\begin{document}
+	\maketitle	
+	\section{Формулировка}
+	\label{sec:0}
+	Гамильтониан взаимодействия электрона с внешним полем 
+	$$A^\mu (r) = \qty(0,\,0,\,0,\,ae^{-\beta^2r^2}),$$
+	где $a,\,\beta = \const$, имеет вид
+	$$ \vu*{H} (x) = e \vu*{\overline{\psi}}(x) \gamma^\mu (1 - \gamma_5) \vu*{\psi}(x) A_\mu (r).$$
+	В низшем порядке теории возмущений найти дифференциальное сечение рассеяния для неполяризованных электронов.
+
+	\section{Решение}
+	На лекциях была формула для первого порядка теории возмущений для амплитуды рассеяния при взаимодействии электрона с электромагнитным полем. Заменим в той формуле центральную матрицу $\gamma^\mu$ на то, что стоит в центре нашего гамильтониана, а именно выполним замену
+	$$ \gamma^\mu \rightarrow \gamma^\mu (1 - \gamma_5),$$
+	чтобы получить в первом порядки теории возмущений формулу для амплитуды рассеяния
+	\begin{equation} \label{eq:1}
+		S_{fi}^{(1)} = -ie\int \dd{{}^4 x} \ev{\vu*{b}_f \vu*{\overline{\psi}}(x) \gamma^\mu (1 - \gamma_5) \vu*{\psi}(x) \vu*{b}_i^\dag }{0} \cdot A_\mu (r).
+	\end{equation}
+	Мы оставили лишь операторы $\hat{b}$, так как они отвечают электронам, а у нас других частиц нет. Сворачивая эти операторы с операторами поля и учитывая то, что поле только вдоль одной пространственной координаты отлично от нуля, получаем
+	\begin{equation}
+		S_{fi}^{(1)} = -ie\int \dd{{}^4 x} \overline{\Psi}_f(x) \gamma^3 (1 - \gamma_5) A_3 (r) \Psi_i(x),
+	\end{equation}
+	где $$ \overline{\Psi}_f(x) = \sqrt{\dfrac{m}{V E_f}} \overline{u}(f) e^{i p_f x}, \quad \Psi_i(x) = \sqrt{\dfrac{m}{V E_i}} u(i) e^{i p_i x}. $$
+	Проинтегрируем (\ref{eq:1}) по $x$
+	\begin{equation}\label{eq:3}
+		S_{fi}^{(1)} \sim \int \dd{t} e^{-i\qty(E_i - E_f)t} \int\dd{\va*{x}} e^{i\va*{x}(\va*{p_i} - \va*{p_f})} A_3(r).
+	\end{equation}
+	Первый интеграл даст 
+	$$ 2\pi\delta\qty(E_f - E_i), $$
+	а второй надо вычислить. Предварительно введём обозначение $\va*{p_i} - \va*{p_f} = \va*{q}$. Для этого перейдём в сферическую систему координат и поднимем индекс компоненты поля (чтобы подставить её в явном виде)
+	$$ \int\dd{\va*{x}} e^{i\va*{x}\va*{q}} A_3(r) = - \int \dd{r} \dd{\theta} \dd{\varphi} r^2 \sin{\theta} e^{irq\cos{\theta}} a e^{-\beta^2r^2}. $$
+	Так как интегрант не зависит от $\varphi$, то интеграл по данному углу даст $2\pi$, а интеграл по углу $\theta$ сложнее и даст
+	$$ \int\dd{\theta} \sin{\theta} e^{irq\cos{\theta}} = 2\dfrac{\sin{rq}}{rq}.$$
+	Тогда остаётся интеграл
+	$$ \int\dd{\va*{x}} e^{i\va*{x}\va*{q}} = -2 \pi a \int \dd{r} 2\dfrac{\sin{rq}}{rq} \cdot r^2 \cdot e^{-\beta^2r^2} = -\dfrac{4\pi a}{q} \int \dd{r} r \cdot \sin{rq} \cdot e^{-\beta^2r^2}.$$
+	Беря последний интеграл, получаем
+	$$ \int \dd{r} r \cdot \sin{rq} \cdot e^{-\beta^2r^2} = \dfrac{\sqrt{\pi}qe^{-{q^2}/(4\beta^2)}}{4\abs{\beta}^3}. $$
+	Тогда получаем, что
+	$$ \int\dd{\va*{x}} e^{i\va*{x}\va*{q}} = -\dfrac{\pi^{3/2} a e^{-{q^2}/(4\beta^2)}}{\abs{\beta}^3}. $$
+	А интеграл (\ref{eq:3}) запишется в итоге так:
+	\begin{equation*}
+		\int \dd{t} e^{-i\qty(E_i - E_f)t} \int\dd{\va*{x}} e^{i\va*{x}(\va*{p_i} - \va*{p_f})} A_3(r) = -\dfrac{2\pi^{5/2} a e^{-{q^2}/(4\beta^2)}}{\abs{\beta}^3} \delta\qty(E_f - E_i).
+	\end{equation*}
+	Подставляя этот результат в выражение для амплитуды рассеяния, имеем
+	\begin{equation}\label{eq:4}
+		S_{fi}^{(1)} = i\dfrac{2\pi^{5/2} a e m \exp\qty(-{q^2}/(4\beta^2))}{V \sqrt{E_i E_f}\abs{\beta}^3} \delta\qty(E_f - E_i) \qty[\overline{u}(f)\gamma^3(1-\gamma_5)u(i)].
+	\end{equation}
+	Далее стоит определить число переходов в единицу времени
+	$$ R = \dfrac{\abs{S_{fi}^{(1)}}^2V \dd{{}^3\va*{p_f}}}{T (2\pi)^3} $$
+	и понимать $(\delta(E_f - E_i))^2$ как $\delta(E_f - E_i)T/(2\pi)$. Распишем скорость переходов
+	$$ R = \dfrac{\pi a^2 e^2 m^2 \exp\qty(-{q^2}/(2\beta^2))}{4 V E_i E_f \abs{\beta}^6} \delta\qty(E_f - E_i) \abs{\overline{u}(f)\gamma^3(1-\gamma_5)u(i)}^2 \dd{{}^3\va*{p_f}}. $$
+	Далее по аналогии с теми действиями, что производились на лекциях, приходим к формуле для дифференциального сечения
+	\begin{equation}
+		\dv{\sigma}{\Omega} \qty(\lambda_i, \lambda_f) = \dfrac{\pi a^2 e^2 m^2}{4 \abs{\beta}^6} \exp\qty(-{q^2}/(2\beta^2)) \abs{\overline{u}(f)\gamma^3(1-\gamma_5)u(i)}^2.
+	\end{equation}
+	Эта формула работает, если мы знаем поляризацию электронов как до, так и после взаимодействия. Но у нас неполяризованные электроны, значит надо просуммировать имеющуюся формулу по конечным спиральностям и взять полусумму по начальным спиральностям
+	\begin{equation}
+		\dv{\overline{\sigma}}{\Omega} = \dfrac12 \sum\limits_{\lambda_i, \lambda_f} \dv{\sigma}{\Omega} \qty(\lambda_i, \lambda_f).
+	\end{equation}
+	От поляризации зависит лишь обложенное функциями $u$ комбинация гамма\---матриц. Поэтому задача сводится к поиску 
+	$$\sum\limits_{\lambda_i, \lambda_f} \abs{\overline{u}(f)\gamma^3(1-\gamma_5)u(i)}^2.$$
+	Поработаем с данной суммой
+	\begin{equation*}
+		\begin{split}
+			\sum\limits_{\lambda_i, \lambda_f} \abs{\overline{u}(f)\gamma^3(1-\gamma_5)u(i)}^2 &= \sum\limits_{\lambda_i, \lambda_f} \overline{u}_\alpha(f) \qty(\gamma^3(1-\gamma_5))_{\alpha\beta} u_\beta(i)u^\dag_\lambda(i) \qty(\gamma^3(1-\gamma_5))^\dag_{\lambda\delta}\gamma^0_{\delta\sigma}u_\sigma(f)\\
+			&= \sum\limits_{\lambda_i, \lambda_f} \overline{u}_\alpha(f) \qty(\gamma^3(1-\gamma_5))_{\alpha\beta} u_\beta(i)u^\dag_\lambda(i) \gamma^0_{\lambda\xi} \qty(\gamma^3(1-\gamma_5))_{\xi\eta} \gamma^0_{\eta\delta} \gamma^0_{\delta\sigma}u_\sigma(f)\\
+			&=\sum\limits_{\lambda_i, \lambda_f} \overline{u}_\alpha(f) \qty(\gamma^3(1-\gamma_5))_{\alpha\beta} u_\beta(i) \overline{u}_\xi(i) \qty(\gamma^3(1-\gamma_5))_{\xi\eta} \delta_{\eta \sigma} u_\sigma(f)\\
+			&= \sum\limits_{\lambda_f}\overline{u}_\alpha(f) \qty(\gamma^3(1-\gamma_5))_{\alpha\beta} \qty(\sum\limits_{\lambda_i} u_\beta(i) \overline{u}_\xi(i)) \qty(\gamma^3(1-\gamma_5))_{\xi\eta} u_\eta(f).
+		\end{split}
+	\end{equation*}
+	Пользуемся условием полноты из четвёртой лекции и пишем
+	\begin{equation*}
+		\begin{split}
+			\sum\limits_{\lambda_i, \lambda_f} \abs{\overline{u}(f)\gamma^3(1-\gamma_5)u(i)}^2 &= \sum\limits_{\lambda_f}\overline{u}_\alpha(f) \qty(\gamma^3(1-\gamma_5))_{\alpha\beta} \qty(\dfrac{\hat{p}_i+m}{2m})_{\beta\xi} \qty(\gamma^3(1-\gamma_5))_{\xi\eta} u_\eta(f)\\
+			&= \sum\limits_{\lambda_f}\overline{u}_\alpha(f) \qty(\gamma^3(1-\gamma_5)\dfrac{\hat{p}_i+m}{2m}\gamma^3(1-\gamma_5))_{\alpha\eta} u_\eta(f).
+		\end{split}
+	\end{equation*}
+	Применяем условие полноты ещё раз
+	\begin{equation*}
+		\begin{split}
+			\sum\limits_{\lambda_i, \lambda_f} \abs{\overline{u}(f)\gamma^3(1-\gamma_5)u(i)}^2 &= \qty(\gamma^3(1-\gamma_5)\dfrac{\hat{p}_i+m}{2m}\gamma^3(1-\gamma_5))_{\alpha\eta} \qty(\dfrac{\hat{p}_f+m}{2m})_{\eta\alpha}\\
+			&=\tr\qty[\gamma^3(1-\gamma_5)\dfrac{\hat{p}_i+m}{2m}\gamma^3(1-\gamma_5)\dfrac{\hat{p}_f+m}{2m}].
+		\end{split}
+	\end{equation*}
+	Задача свелась к вычислению следа некоторой матрицы. Не трудно вычислить данную матрицу в явном виде. Для этого сначала посчитаем матрицу
+	\begin{equation*}
+		\begin{split}
+			\gamma^3(1-\gamma_5) &= \mqty(0&0&1&0 \\ 0&0&0&-1 \\ -1&0&0&0 \\ 0&1&0&0 ) \qty(1 - \mqty(0&0&1&0 \\ 0&0&0&1 \\ 1&0&0&0 \\ 0&1&0&0 ))\\
+			&= \mqty(0&0&1&0 \\ 0&0&0&-1 \\ -1&0&0&0 \\ 0&1&0&0 ) - \mqty(\dmat{1,-1,-1,1}) = \mqty(-1&0&1&0 \\ 0&1&0&-1 \\ -1&0&1&0 \\ 0&1&0&-1).
+		\end{split}
+	\end{equation*}
+	Далее вспоминаем, что $\hat{p}_i = p_\mu(i)\gamma^\mu = p^0_i\gamma^0 - \va*{p}_i \va*{\gamma}$. Значит, для дальнейших рассуждений будет полезно знание следующих матричных произведений:
+	\begin{equation*}
+		\begin{split}
+			&\gamma^3(1-\gamma_5) \gamma^0 = \mqty(-1&0&-1&0 \\ 0&1&0&1 \\ -1&0&-1&0 \\ 0&1&0&1),
+			\\
+			&\gamma^3(1-\gamma_5) \gamma^1 = \mqty(0&-1&0&-1 \\ 1&0&1&0 \\ 0&-1&0&-1 \\ 1&0&1&0),\\
+			&\gamma^3(1-\gamma_5) \gamma^2 = \mqty(0&i&0&i \\ i&0&i&0 \\ 0&i&0&i \\ i&0&i&0),\\
+			&\gamma^3(1-\gamma_5) \gamma^3 =  \mqty(-1&0&-1&0 \\ 0&-1&0&-1 \\ -1&0&-1&0 \\ 0&-1&0&-1).
+		\end{split}
+	\end{equation*}
+	Отсюда не сложно видеть, что, например, $\gamma^3(1-\gamma_5)\hat{p}_i$ будет иметь блочный вид
+	$$ \gamma^3(1-\gamma_5)\hat{p}_i = \mqty(A_i & A_i \\ A_i & A_i), $$
+	где имеет вид
+	$$ A_i = \mqty(-p^0_i + p^3_i & p^1_i - ip^2_i \\ -p^1_i - ip^2_i & p^0_i + p^3_i).$$
+	Отсюда сразу же следует, что 
+	$$ \gamma^3(1-\gamma_5)\hat{p}_i \gamma^3(1-\gamma_5)\hat{p}_f = \mqty(A_i & A_i \\ A_i & A_i) \mqty(A_f & A_f \\ A_f & A_f) = 2 \mqty(A_i A_f &A_i A_f \\ A_i A_f & A_i A_f).$$
+	Это сильно упрощает задачу, ведь теперь след можно получить, как
+	$$ \tr\qty[\gamma^3(1-\gamma_5)\hat{p}_i \gamma^3(1-\gamma_5)\hat{p}_f] = 4 \tr\qty[A_i A_f]. $$
+	Считаем получившийся след 
+	\begin{equation*}
+		\begin{split}
+			\tr\qty[A_i A_f] &= (-p^0_i + p^3_i) (-p^0_f + p^3_f) + (p^1_i - ip^2_i) (-p^1_f - ip^2_f) + (-p^1_i - ip^2_i) (p^1_f - ip^2_f) + (p^0_i + p^3_i) (p^0_f + p^3_f)\\
+			&= p^0_i p^0_f - p^0_i p^3_f - p^3_i p^0_f + p^3_i p^3_f - p^1_i p^1_f - i p^1_i p^2_f + i p^2_i p^1_f - p^2_i p^2_f - p^1_i p^1_f + ip^1_i p^2_f - ip^2_i p^1_f - p^2_i p^2_f\\
+			&\quad+ p^0_i p^0_f + p^0_i p^3_f + p^3_i p^0_f + p^3_i p^3_f\\
+			&= 2 \qty(p^0_i p^0_f + p^3_i p^3_f - p^1_i p^1_f - p^2_i p^2_f) = 2(2p^3_i p^3_f - p_ip_f). 
+ 		\end{split}
+	\end{equation*}
+	Выберем систему координат таким образом, что ось $z$ направлена по импульсу начального электрона. Кроме того, заметим, что из выражения (\ref{eq:4}) следует, что при рассеянии в данном потенциале энергия, а, значит, и модуль вектора импульса сохраняются
+	$$ E_i = E_i = E,\quad \abs{\va*{p}_i} = \abs{\va*{p}_f} = \abs{\va*{p}}. $$
+	Ещё в свете введённых обозначений можно выразить модуль вектора $\va*{q}$ (получали такое на лекциях)
+	$$ \abs{\va*{q}}^2 = 4 \abs{\va*{p}}^2 \sin^2{\dfrac{\theta}{2}}. $$
+	Тут и ниже $\theta$ является углом рассеяния. Через него, модуль импульса и энергию можно выразить составляющие следа
+	$$ p^3_i p^3_f = \abs{\va*{p}}^2 \cos{\theta},\quad p_ip_f = E^2 - \abs{\va*{p}}^2 \cos{\theta}.$$
+	Учитывая связь энергии и импульса
+	$$ E^2 = m^2 + \abs{\va*{p}}^2, $$
+	след можно записать так:
+	$$ \tr\qty[\gamma^3(1-\gamma_5)\hat{p}_i \gamma^3(1-\gamma_5)\hat{p}_f] = 8 (E^2 + \abs{\va*{p}}^2 \cos{\theta}) = 8 \qty(m^2 + 2\abs{\va*{p}}^2 \cos^2{\dfrac\theta2}).$$
+	Фактически на этом решение задачи подходит к концу, надо лишь подставить всё в формулу для дифференциального сечения. Ответ будет следующим:
+	\begin{equation}
+		\dv{\overline{\sigma}}{\Omega} = \dfrac{\pi a^2 e^2 m^2}{\abs{\beta}^6} \exp\qty(-\dfrac{2 \abs{\va*{p}}^2 \sin^2{\dfrac{\theta}{2}}}{\beta^2}) \qty(m^2 + 2\abs{\va*{p}}^2 \cos^2{\dfrac\theta2}).
+	\end{equation}
+	
+\end{document}
