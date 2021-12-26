@@ -131,8 +131,8 @@
 	$$ A_i = \mqty(-p^0_i + p^3_i & p^1_i - ip^2_i \\ -p^1_i - ip^2_i & p^0_i + p^3_i).$$
 	Отсюда сразу же следует, что 
 	$$ \gamma^3(1-\gamma_5)\hat{p}_i \gamma^3(1-\gamma_5)\hat{p}_f = \mqty(A_i & A_i \\ A_i & A_i) \mqty(A_f & A_f \\ A_f & A_f) = 2 \mqty(A_i A_f &A_i A_f \\ A_i A_f & A_i A_f).$$
-	Это сильно упрощает задачу, ведь теперь след можно получить, как
-	$$ \tr\qty[\gamma^3(1-\gamma_5)\hat{p}_i \gamma^3(1-\gamma_5)\hat{p}_f] = 4 \tr\qty[A_i A_f]. $$
+	Это сильно упрощает задачу, ведь теперь след можно получить, как (тут важно не потерять множитель $(4m^2)^{-1}$)
+	$$ \tr\qty[\gamma^3(1-\gamma_5)\hat{p}_i \gamma^3(1-\gamma_5)\hat{p}_f] = \dfrac{4}{4m^2} \tr\qty[A_i A_f] = \dfrac{1}{m^2}\tr\qty[A_i A_f]. $$
 	Считаем получившийся след 
 	\begin{equation*}
 		\begin{split}
@@ -151,10 +151,10 @@
 	Учитывая связь энергии и импульса
 	$$ E^2 = m^2 + \abs{\va*{p}}^2, $$
 	след можно записать так:
-	$$ \tr\qty[\gamma^3(1-\gamma_5)\hat{p}_i \gamma^3(1-\gamma_5)\hat{p}_f] = 8 (E^2 + \abs{\va*{p}}^2 \cos{\theta}) = 8 \qty(m^2 + 2\abs{\va*{p}}^2 \cos^2{\dfrac\theta2}).$$
+	$$ \tr\qty[\gamma^3(1-\gamma_5)\hat{p}_i \gamma^3(1-\gamma_5)\hat{p}_f] = \dfrac{2}{m^2} (E^2 + \abs{\va*{p}}^2 \cos{\theta}) = \dfrac{2}{m^2} \qty(m^2 + 2\abs{\va*{p}}^2 \cos^2{\dfrac\theta2}).$$
 	Фактически на этом решение задачи подходит к концу, надо лишь подставить всё в формулу для дифференциального сечения. Ответ будет следующим:
 	\begin{equation}
-		\dv{\overline{\sigma}}{\Omega} = \dfrac{\pi a^2 e^2 m^2}{\abs{\beta}^6} \exp\qty(-\dfrac{2 \abs{\va*{p}}^2 \sin^2{\dfrac{\theta}{2}}}{\beta^2}) \qty(m^2 + 2\abs{\va*{p}}^2 \cos^2{\dfrac\theta2}).
+		\dv{\overline{\sigma}}{\Omega} = \dfrac{\pi a^2 e^2}{4\abs{\beta}^6} \exp\qty(-\dfrac{2 \abs{\va*{p}}^2 \sin^2{\dfrac{\theta}{2}}}{\beta^2}) \qty(m^2 + 2\abs{\va*{p}}^2 \cos^2{\dfrac\theta2}).
 	\end{equation}
 	
 \end{document}
